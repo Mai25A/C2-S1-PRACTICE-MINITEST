@@ -1,7 +1,7 @@
-export default function Score({coursename, listResult}){
+export default function Scores({courseName, listResult}){
     return(
         <div class="scores">
-          <h1>Fake Course</h1>
+          <h1>{courseName}</h1>
 
           <table>
             <thead>
@@ -12,16 +12,15 @@ export default function Score({coursename, listResult}){
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>First name 1 </td>
-                <td>Last name 1 </td>
-                <td>55</td>
-              </tr>
-              <tr>
-                <td>First name 2 </td>
-                <td>Last name 2 </td>
-                <td>45</td>
-              </tr>
+              {listResult.map((item)=>{
+                return(
+                  <tr>
+                    <td>{item.firstName}</td>
+                    <td>{item.lastName}</td>
+                    <td className={item.score < 50 ?"warning":""}>{item.score}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
